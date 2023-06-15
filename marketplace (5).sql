@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Июн 15 2023 г., 11:32
+-- Время создания: Июн 15 2023 г., 11:55
 -- Версия сервера: 10.4.27-MariaDB
 -- Версия PHP: 8.1.12
 
@@ -251,7 +251,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `salt`, `role`, `img`, `createdAt`, `updatedAt`) VALUES
 (1, 'admin', 'aleksei22891@.com', '$2b$10$xvTuliT5..HO2SM5wjqjwu4qq.8YPQutnh.X.9O5hZnGMCw6aE/Iu', '$2b$10$xvTuliT5..HO2SM5wjqjwu', 3, 'pngtree-extreme-hunter-gaming-logo-template-for-gamer-image_304139.jpg', '2023-06-15 09:18:51', '2023-06-15 09:19:59'),
-(2, 'mif', 'mif@gmail.com', '$2b$10$dq52Sl3dbp398kbv.6qQFujph5yvUWPAhn0zKTJf6zHl0GtwWGOPC', '$2b$10$dq52Sl3dbp398kbv.6qQFu', 1, NULL, '2023-06-15 09:27:41', '2023-06-15 09:27:41');
+(2, 'mifis', 'mif@gmail.com', '$2b$10$dq52Sl3dbp398kbv.6qQFuUDKaIxZASW.2sY71NapRCnwtvWrxbL6', '$2b$10$dq52Sl3dbp398kbv.6qQFu', 1, '8304be6a513c6987e58c9bb775116f281a06476a3e1481aef097ec55afc765d0.jpg', '2023-06-15 09:27:41', '2023-06-15 09:33:22');
 
 -- --------------------------------------------------------
 
@@ -388,29 +388,29 @@ ALTER TABLE `users`
 -- Ограничения внешнего ключа таблицы `carts`
 --
 ALTER TABLE `carts`
-  ADD CONSTRAINT `carts_ibfk_7` FOREIGN KEY (`userId`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `carts_ibfk_8` FOREIGN KEY (`productId`) REFERENCES `products` (`id`);
+  ADD CONSTRAINT `carts_ibfk_15` FOREIGN KEY (`userId`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `carts_ibfk_16` FOREIGN KEY (`productId`) REFERENCES `products` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `histories`
 --
 ALTER TABLE `histories`
-  ADD CONSTRAINT `histories_ibfk_7` FOREIGN KEY (`userId`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `histories_ibfk_8` FOREIGN KEY (`productId`) REFERENCES `products` (`id`);
+  ADD CONSTRAINT `histories_ibfk_15` FOREIGN KEY (`userId`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `histories_ibfk_16` FOREIGN KEY (`productId`) REFERENCES `products` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `products`
 --
 ALTER TABLE `products`
-  ADD CONSTRAINT `products_ibfk_7` FOREIGN KEY (`sellerId`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `products_ibfk_8` FOREIGN KEY (`categoryId`) REFERENCES `categories` (`id`);
+  ADD CONSTRAINT `products_ibfk_15` FOREIGN KEY (`sellerId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `products_ibfk_16` FOREIGN KEY (`categoryId`) REFERENCES `categories` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `product_tags`
 --
 ALTER TABLE `product_tags`
-  ADD CONSTRAINT `product_tags_ibfk_7` FOREIGN KEY (`productId`) REFERENCES `products` (`id`),
-  ADD CONSTRAINT `product_tags_ibfk_8` FOREIGN KEY (`tagId`) REFERENCES `tags` (`id`);
+  ADD CONSTRAINT `product_tags_ibfk_15` FOREIGN KEY (`productId`) REFERENCES `products` (`id`),
+  ADD CONSTRAINT `product_tags_ibfk_16` FOREIGN KEY (`tagId`) REFERENCES `tags` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

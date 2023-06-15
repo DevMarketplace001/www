@@ -1,6 +1,8 @@
 
 const db = require("./connection/database");
 const models = require("./models");
+models.user.hasMany(models.product, { foreignKey: 'sellerId', as: 'products' });
+models.product.belongsTo(models.user, { foreignKey: 'sellerId', as: 'seller' });
 const swaggerUi = require("swagger-ui-express");
 const swaggerFile = require("./swagger_output.json");
 

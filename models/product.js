@@ -1,5 +1,5 @@
 const db = require('../connection/database')
-const {DataTypes, Model} =  require('sequelize')
+const {DataTypes, Model, Sequelize} =  require('sequelize')
 class Product extends Model{}
 Product.init({
     id: {
@@ -46,4 +46,5 @@ Product.init({
     sequelize:db,
     modelName: 'products'
 })
+
 module.exports = Product
