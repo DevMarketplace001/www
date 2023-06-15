@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('../partials/head'); %>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <%- include('../partials/header'); %>
+            </header>
+            <div class="content">
+                <%- include('../partials/left_aside'); %>
+                <main>
+                    <div class="contact">
+                        <h2 class="big">Worked on the project:</h2>
+                        <div>
+                            <p class="middle">Chief developer: Alexey Kozlov <br>
+                                tel: 59024698 <br>
+                                mail: all@gmail.com <br>
+                                Database developer: Danil Vasiliev
+                                tel: 57689412 <br>
+                                email: dan@gmail.com <br>
+                            </p>
+                        </div>
+                        <div>
+                            <p class="middle">
+                                Technical writer: Denis Drozdov  <br>
+                                tel: 51425368 <br>
+                                email: drozd@gmail.com <br>
+                                Chief designer: Rustem Kurshutov <br>
+                                tel: 57859625 <br>
+                                mail: rustik@gmail.com
+                            </p>
+                        </div>
+                    </div>
+                </main>
+            </div>
+            <% if (!user) { %>
+                <%- include('../partials/auth.ejs'); %>
+            <% } %>
+            
+            <footer>
+                <%- include('../partials/footer'); %>
+            </footer>
+        </div>
+    </body>
+</html>

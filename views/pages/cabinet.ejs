@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('../partials/head'); %>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="../scripts/chart.js"></script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <%- include('../partials/header'); %>
+            </header>
+            <div class="content">
+                <%- include('../partials/left_aside'); %>
+                <main>
+                    <canvas id="barChart"></canvas>
+                </main>
+            </div>
+            <% if (!user) { %>
+                <%- include('../partials/auth.ejs'); %>
+            <% } %>
+            
+            <footer>
+                <%- include('../partials/footer'); %>
+            </footer>
+        </div>
+    </body>
+</html>

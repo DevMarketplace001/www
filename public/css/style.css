@@ -1,0 +1,326 @@
+body{
+    padding: 0;
+    margin: 0;
+    background-color: rgb(32, 32, 32);
+}
+.scroll_off{
+    overflow: hidden;
+}
+.wrapper {
+    width:100%;
+    min-height: 100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    align-items:stretch;
+}
+::-webkit-scrollbar {
+    width:10px;
+}
+::-webkit-scrollbar-track {
+    background:#2525252c;
+}
+::-webkit-scrollbar-thumb {
+    background:#2c2c2c;
+}
+::-webkit-scrollbar-thumb:hover {
+    background:#261f38;
+}
+.content{
+    width:100%;
+    display: flex;
+    justify-content:space-between;
+    flex-grow: 1;
+    align-items: start;
+    padding-right: 8vmin;
+    box-sizing: border-box;
+    margin-top: 18vmin;
+    position: relative;
+}
+header {
+    width: 100%;
+    height: 14vmin;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    font-family: "glitch";
+    padding: 0px 1%;
+    box-sizing: border-box;
+    letter-spacing: 2px;
+    box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.572);
+    padding-bottom: 10px;
+    position: fixed;
+    z-index: 10;
+    background-color: rgb(32, 32, 32);
+}
+.logo{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: end;
+    width: 30vmin;
+}
+.logo-img{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:10vmin;
+    width: 10vmin;
+    padding-bottom: 15px;
+}
+.logo-img img{
+    position: absolute;
+    width: 100%;
+    
+}
+
+header .logo-name{
+    position: absolute;
+    width: 22vmin;
+}
+header .logo-name img{
+    width:100%;
+}
+.btns-header{
+    display: flex;
+    justify-content: end;
+    flex-grow: 1;
+    margin-right: 2%;
+}
+.tabs{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.tabs a{
+    color: White;
+    text-shadow: 0px 0px 3px white;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin: 5px 2vmin;
+}
+.btns-search{
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btns-search img{
+    width: 5vmin;
+}
+.btns-search img:last-child{
+    width: 3vmin;
+}
+.logs{
+    display: flex;
+    flex-direction: column;
+    text-shadow: 0px 0px 1px rgb(0, 0, 0);
+    text-transform: uppercase;
+    position: fixed;
+    top: 10vmin;
+    right: -6vmin;
+    flex-wrap: wrap;
+    z-index: 11;
+}
+.logs .circle-btn{
+    height: 13vmin;
+    width: 13vmin;
+    display: flex;
+    justify-content: start;
+    align-content: center;
+    background-color: white;
+    padding: 5px;
+    border-radius: 1000px;
+    margin: 1vmin 0px;
+    cursor: pointer;
+}
+.logs .circle-btn p{
+    writing-mode: vertical-rl; /* Устанавливаем вертикальное направление текста */
+    font-family: "glitch";
+    color: black;
+    transform: rotate(180deg);
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+
+main{
+    display: flex;
+    justify-content:space-around;
+    width:83%;
+    padding: 10px;
+    flex-wrap: wrap;
+}
+.about{
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "raven";
+    color: white;
+    letter-spacing: 1px;
+    
+}
+.about .logo-img{
+    margin: 0 1.5% 0 1.5%;
+    width: 50vmin;
+    height: 50vmin;
+}
+.about p{
+    max-width: 30%;
+    margin: 0;
+}
+.about p:nth-child(3){
+    text-align: end;
+}
+.row{
+    margin-bottom: 20px;
+}
+.row h2{
+    color: white;
+    width: 100%;
+    font-family: "glitch";
+    text-transform: uppercase;
+    margin: 0px;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+.productView{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: white;
+    border: 5px solid black;
+    border-radius: 10px;
+    padding: 30px;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 15px black;
+    width: 80%;
+    height: max-content;
+    position: relative;
+}
+.productView > a{
+    width: fit-content;
+    font-family: "glitch";
+    text-transform: uppercase;
+    padding: 10px 15px;
+    letter-spacing: 2px;
+    background-color: white;
+    color: black;
+    border: 3px solid black;
+    transition-duration: 0.2s;
+    cursor: pointer;
+}
+.productView h2{
+    width: 100%;
+    font-family: "raven";
+    margin-top: 0px;
+}
+.productView .files{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    flex-grow: 1;
+    margin: 0px 1%;
+}
+.productView .files .result{
+    width: 100%;
+    height: 30vmin;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.productView .files .result .show{
+    flex-grow: 1;
+    border: 1px solid black;
+    background-image: url(../imgs/plus.png);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+}
+.productView .files .code{
+    width: 100%;
+    margin-top: 10px;
+}
+.productView .files .code h2{
+    margin: 0px;
+    text-transform: uppercase;
+    font-family: "raven";
+    margin-bottom: 10px;
+}
+.productView .btn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+.productView .btn button{
+    width: fit-content;
+    font-family: "glitch";
+    text-transform: uppercase;
+    padding: 10px 15px;
+    letter-spacing: 2px;
+    background-color: white;
+    color: black;
+    border: 3px solid black;
+    transition-duration: 0.2s;
+    cursor: pointer;
+}
+.productData{
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+    height: 100%;
+    flex-grow: 1;
+    margin: 0px 1%;
+}
+.productData input, .productData p{
+    width: 100%;
+    height: 4vmin;
+    margin: 10px 0px;
+    font-family: "enso";
+}
+.productData h2{
+    margin-bottom: 0px;
+}
+.productData p{
+    margin: 0px;
+}
+.productData textarea{
+    resize: none;
+    width: 100%;
+    height: 20vmin;
+    margin-bottom: 10px;
+    font-family: "enso";
+}
+.categoriesTags{
+    display: flex;
+    justify-content: space-around;
+}
+.productData select{
+    width: 45%;
+    font-family: "enso";
+}
+.contact{
+    width: 70%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    color: white;
+}
+.contact h2{
+    width: 100%;
+    font-family: "raven";
+    letter-spacing: 3px;
+}
+.contact >div{
+    width: 48%;
+    font-family: "enso";
+}

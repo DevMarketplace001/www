@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('../partials/head'); %>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <%- include('../partials/header'); %>
+            </header>
+            <div class="content">
+                <%- include('../partials/left_aside'); %>
+                <main>
+                    <form enctype="multipart/form-data" class="productView addProduct">
+                        <h2 class="big">Form to add product</h2>
+                        <div class="files">
+                            <div class="result">
+                                <div class="show">
+    
+                                </div>
+                                <div class="file-upload">
+                                    <input type="file"  name="result" id="result" class="custom-file-input" accept="image/jpg, image/jpeg, image/png, image/gif" required/>
+                                    <label for="result" class="custom-file-label big">Select file</label>
+                                </div>
+                            </div>
+                            <div class="code">
+                                <h2 class="middle">Upload code</h2>
+                                <input type="file"  name="code" id="code" class="custom-file-input" accept=".rar, .zip" required/>
+                                <label for="code" class="custom-file-label middle">Select file</label>
+                            </div>
+                        </div>
+                        <div class="productData">
+                            <input type="text" name="title" placeholder="Title" class="middle" required value="adda">
+                            <input type="number" name="price" placeholder="Price" step="0.01" min="0" class="middle" required value="500">
+                            <textarea name="description" cols="30" rows="10" class="middle" placeholder="Description">jaewjhfjhjqhw  fhh  ahu fahjkfhjkhjk afhjkfd hkjhjk dhjk asf dhjkfhk udsaf fd hjk hjkh fdhfdakjh f</textarea>
+                            <div class="categoriesTags">
+                                <select name="category" class="middle" required>
+                                    <option value="--" selected disabled> Select category</option>
+                                    <% categories.forEach(element => { %>
+                                        <option value="<%= element.id %>"><%= element.title %></option>
+                                    <% }) %>
+                                </select>
+                                <select name="tag" class="middle" required>
+                                    <option value="--" selected disabled> Select tag</option>
+                                    <% tags.forEach(element => { %>
+                                        <option value="<%= element.id %>"><%= element.title %></option>
+                                    <% }) %>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="btn">
+                            <button class="big">add product</button>
+                            <p class="callback middle">&#8205;</p>
+                        </div>
+                    </form>
+                </main>
+            </div>
+            <% if (!user) { %>
+                <%- include('../partials/auth.ejs'); %>
+            <% } %>
+            
+            <footer>
+                <%- include('../partials/footer'); %>
+            </footer>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('../partials/head'); %>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <%- include('../partials/header'); %>
+            </header>
+            <div class="content">
+                <%- include('../partials/left_aside'); %>
+                <main>
+                    <div class="profile">
+                        <div class="avatar">
+                            <img src="<% if (user.img) { %>users/<%= user.id %>/avatar/<%= user.img %><% }else{ %>imgs/default_avatar.png<% }%>" alt="">
+                            <div class="file-upload">
+                                <input type="file" class="custom-file-input" name="avatar" id="avatar"/>
+                                <label for="avatar" class="custom-file-label big">Select file</label>
+                                <div id="file-info"></div>
+                            </div>
+                        </div>
+                        <div class="profileData">
+                            <form id="profileUpdate">
+                                <input type="text" class="big" name="username" placeholder="Username" id="username" value="<%= user.username %>">
+                                <p class="userCallback"></p>
+                                <input type="email" class="big" name="email" placeholder="Email" id="email" value="<%= user.email %>">
+                                <p class="emailCallback"></p>
+                                <input type="text" class="big" name="password" placeholder="Password">
+                                <p class="callback middle">&#8205;</p>
+                                <button class="middle">update profile</button>
+                            </form>
+                        </div>
+                    </div>
+                </main>
+            </div>
+            <% if (!user) { %>
+                <%- include('../partials/auth.ejs'); %>
+            <% } %>
+            
+            <footer>
+                <%- include('../partials/footer'); %>
+            </footer>
+        </div>
+    </body>
+</html>

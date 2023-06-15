@@ -1,0 +1,268 @@
+.user{
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    position: relative;
+}
+.user .head{
+    width: 10vmin;
+    height: 10vmin;
+    border-radius: 10vmin;
+    cursor: pointer;
+    border-radius: 7vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.user .head img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.user .body {
+    background-color: white;
+    border: 3px solid rgb(10, 1, 49);
+    border-radius: 10px;
+    position: absolute;
+    top: 100%;
+    z-index: 5;
+    width: min-content;
+    list-style: none;
+    padding: 0px;
+}
+.user .body li{
+    width: 100%;
+}
+.user .body a{
+    display: block;
+    color: black !important;
+    transition-duration: 0.2s;
+    padding: 10px 40px 10px 10px;
+    border: 1px solid black;
+    font-family: "raven";
+    text-decoration: none;
+    width: 100%;
+}
+.user .body a:hover{
+    background-color: rgba(25, 3, 91, 0.117);
+}
+.manCat{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    align-items: center;
+}
+.manCat h2{
+    margin: 5px 10px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-family: "raven";
+}
+.add_form{
+    background-color: white;
+    border: 4px solid black;
+    box-shadow: 0px 0px 10px black;
+    border-radius: 10px;
+    padding: 20px;
+    min-width: 30%;
+
+
+}
+.add_form form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.add_form form input{
+    height: 5vmin;
+    width: 95%;
+    margin-bottom: 10px;
+    font-family: "enso";
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.add_form form button{
+    width: fit-content;
+    font-family: "glitch";
+    text-transform: uppercase;
+    padding: 10px 15px;
+    letter-spacing: 2px;
+    background-color: white;
+    color: black;
+    border: 3px solid black;
+    transition-duration: 0.2s;
+    cursor: pointer;
+}
+.add_form form button:hover{
+    color: white;
+    background-color: black;
+}
+.add_form .callback{
+    text-transform: uppercase;
+}
+.add_form p{
+    margin: 0px;
+}
+.delete_forms{
+    background-color: white;
+    border: 4px solid black;
+    box-shadow: 0px 0px 10px black;
+    border-radius: 10px;
+    width: max-content;
+    height: 70vh;
+    width: 35%;
+    overflow-y: scroll;
+    list-style: none;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
+.delete_forms li{
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border-top: 1px solid black;
+    transition-duration: 0.2s;
+}
+.delete_forms li:hover{
+    background-color: rgb(226, 226, 226);
+}
+.delete_forms li form{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.delete_form label{
+    text-transform: uppercase;
+    font-family: "enso";
+}
+.delete_form input{
+    display: none;
+}
+.delete_form button{
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0px;
+}
+.delete_form button img{
+    width: 5vmin;
+}
+.profile{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+.profileData{
+    width: 40%;
+}
+#profileUpdate{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: "glitch";
+}
+#profileUpdate input{
+    height: 5vmin;
+    font-family: "enso";
+    text-transform: uppercase;
+    margin: 5px 0px;
+}
+#profileUpdate button{
+    width: fit-content;
+    font-family: "glitch";
+    text-transform: uppercase;
+    padding: 10px 15px;
+    letter-spacing: 2px;
+    background-color: white;
+    color: black;
+    border: 3px solid black;
+    transition-duration: 0.2s;
+    cursor: pointer;
+}
+
+#profileUpdate button:hover{
+    color: white;
+    background-color: black;
+}
+#profileUpdate p{
+    margin: 0px;
+    color: white;
+    font-family: "enso";
+}
+.avatar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50vmin;
+    height: 55vmin;
+}
+.avatar img{
+    width: 50vmin;
+    height: 50vmin;
+    object-fit: cover;
+    border-radius: 100vmin;
+}
+.file-upload {
+    height: max-content;
+}
+
+.custom-file-input {
+    display: none; 
+}
+
+.custom-file-label {
+    width: fit-content;
+    font-family: "glitch";
+    text-transform: uppercase;
+    padding: 10px 15px;
+    letter-spacing: 2px;
+    background-color: white;
+    color: black;
+    border: 3px solid black;
+    transition-duration: 0.2s;
+    cursor: pointer;
+}
+
+.custom-file-label:hover{
+    color: white;
+    background-color: black;
+}
+#toCart{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+#toCart button{
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+#toCart img{
+    width: 10vmin;
+}
+.buyAll{
+    width: 100%;
+}
+.buyAll h2{
+    font-family: "raven";
+    color: white;
+}
+.buyAll button{
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.buyAll img{
+    width: 10vmin;
+}
+#barChart{
+    width: 50% !important;
+    height: 40vmin !important;
+}

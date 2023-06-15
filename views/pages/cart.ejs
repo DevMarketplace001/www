@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('../partials/head'); %>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <%- include('../partials/header'); %>
+            </header>
+            <div class="content">
+                <%- include('../partials/left_aside'); %>
+                <main>
+                    <form class="buyAll">
+                        <h2>Buy All</h2>
+                        <% cart.forEach(element => { %>
+                            <input type="text" value="<%= element.productId%>" name="id" class="nonDisplay">
+                        <% }) %>
+                        <button><img src="../imgs/purchase.png" alt=""></button>
+                    </form>
+                    <% cart.forEach(element => { %>
+                        <div class="card">
+                            <form class="delCart">
+                                <input type="text" value="<%= element.cartId %>" name="id" class="nonDisplay">
+                                <button><img src="../imgs/delete.png" alt=""></button>
+                            </form>
+                            <div class="card-img" style="background-image: url('../users/<%= element.sellerId%>/product<%= element.productId%>/result/<%=element.resultPath%>');"><a href="/product/<%= element.id %>"></a></div>
+                            <div class="card-body">
+                                <p class="title"><%= element.title %></p>
+                                <p class="price"><%= element.price %>$</p>
+                            </div>
+                        </div>
+                    <% }) %>
+                </main>
+            </div>
+            <% if (!user) { %>
+                <%- include('../partials/auth.ejs'); %>
+            <% } %>
+            
+            <footer>
+                <%- include('../partials/footer'); %>
+            </footer>
+        </div>
+    </body>
+</html>

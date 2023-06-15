@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('../partials/head'); %>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <%- include('../partials/header'); %>
+            </header>
+            <div class="content">
+                <%- include('../partials/left_aside'); %>
+                <main>
+                    <% if (user && user.id == product.sellerId) { %>
+                        <form enctype="multipart/form-data" class="productView updateProduct">
+                            <h2 class="big">Form to add product</h2>
+                            <div class="files">
+                                <div class="result">
+                                    <div class="show" style="background-image: url('../users/<%=product.sellerId%>/product<%=product.id%>/result/<%=product.resultPath%>');">
+        
+                                    </div>
+                                    <div class="file-upload">
+                                        <input type="file"  name="result" id="result" class="custom-file-input" accept="image/jpg, image/jpeg, image/png, image/gif"/>
+                                        <label for="result" class="custom-file-label big">Select file</label>
+                                    </div>
+                                </div>
+                                <div class="code">
+                                    <h2 class="middle">Upload code</h2>
+                                    <input type="file"  name="code" id="code" class="custom-file-input" accept=".rar, .zip"/>
+                                    <label for="code" class="custom-file-label middle">Select file</label>
+                                </div>
+                            </div>
+                            <div class="productData">
+                                <input type="text" name="title" placeholder="Title" class="middle" value="<%= product.title %>">
+                                <input type="number" name="price" placeholder="Price" step="0.01" min="0" class="middle" value="<%= product.price %>">
+                                <textarea name="description" cols="30" rows="10" class="middle" placeholder="Description"><%= product.description %></textarea>
+                                <div class="categoriesTags">
+                                    <select name="category" class="middle">
+                                        <option value="--" selected disabled> Select category</option>
+                                        <% categories.forEach(element => { %>
+                                            <option value="<%= element.id %>"><%= element.title %></option>
+                                        <% }) %>
+                                    </select>
+                                    <select name="tag" class="middle">
+                                        <option value="--" selected disabled> Select tag</option>
+                                        <% tags.forEach(element => { %>
+                                            <option value="<%= element.id %>"><%= element.title %></option>
+                                        <% }) %>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="btn">
+                                <button class="big">Update</button>
+                                <p class="callback middle">&#8205;</p>
+                            </div>
+                            <% if (user && (bought || user.id == product.sellerId)) { %>
+                                <a href="../../users/<%= product.sellerId%>/product<%=product.id%>/code/<%=product.codePath%>" class="download">Download</a>
+                            <% } %>
+                        </form>
+                    <% }else{ %>
+                        <div class="productView">
+                            <% if (user&&(product.sellerId != user.id && (!bought && !getCart))) { %>
+                                <form id="toCart">
+                                    <input type="number" class="nonDisplay" value="<%= product.id %>" name="cart">
+                                    <button><img src="../imgs/cart.png" alt=""></button>
+                                </form>
+                            <% } %>
+                            <div class="files">
+                                <div class="result">
+                                    <div class="show" style="background-image: url('../../users/<%= product.sellerId%>/product<%=product.id%>/result/<%=product.resultPath%>');">
+        
+                                    </div>
+                                </div>
+                                <div class="code">
+                                    <a href="../../users/<%= product.sellerId %>"></a>
+                                </div>
+                            </div>
+                            <div class="productData">
+                                <h2 class="middle">Title:</h2>
+                                <p class="smallest"><%= product.title %></p>
+                                <h2 class="middle">Price:</h2>
+                                <p class="smallest"><%= product.price %></p>
+                                <h2 class="middle">Category:</h2>
+                                <p class="smallest"><%= product.cat %></p>
+                                <h2 class="middle">Description:</h2>
+                                <p class="smallest"><%= product.description %></p>
+                                
+                            </div>
+                            <% if (user && (bought || user.id == product.sellerId)) { %>
+                                <a href="../../users/<%= product.sellerId%>/product<%=product.id%>/code/<%=product.codePath%>" class="download">Download</a>
+                            <% } %>
+                            
+                        </form>
+                    <%}%>
+                </main>
+            </div>
+            <% if (!user) { %>
+                <%- include('../partials/auth.ejs'); %>
+            <% } %>
+            
+            <footer>
+                <%- include('../partials/footer'); %>
+            </footer>
+        </div>
+    </body>
+</html>

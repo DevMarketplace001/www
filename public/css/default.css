@@ -1,0 +1,93 @@
+.row{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.very-large{
+    font-size: 8vmin !important;
+}
+.largest{
+    font-size: 7vmin !important;
+}
+.large{
+    font-size:6vmin !important
+}
+.biggest{
+    font-size: 5vmin !important;
+}
+.big{
+    font-size:4vmin !important
+}
+.middle{
+    font-size:3vmin !important
+}
+.smallest{
+    font-size: 2.5vmin !important;
+}
+.small{
+    font-size:2vmin !important
+}
+.tiny{
+    font-size:1.5vmin !important
+}
+.left{
+    margin-left: 5%;
+}
+.right{
+    margin-right: 5%;
+}
+.top{
+    margin-top: 10%;
+}
+.bottom{
+    margin-bottom: 10%;
+}
+.relative{
+    position: relative;
+}
+.absolute{
+    position: absolute;
+}
+.null{
+    width: 100%;
+    height: 0px !important;
+    padding: 0px !important;
+}
+.nonDisplay{
+    display: none;
+}
+@keyframes round {
+    from {
+        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    }
+    to {
+        transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+    }
+}
+@media (prefers-reduced-motion: no-preference) {
+    .logo-img img:nth-child(1) {
+      animation: round infinite 12s linear;
+    }
+    .logo-img img:nth-child(2) {
+        animation: round infinite 10s linear;
+        animation-delay: -25ms;
+    }
+    .logo-img img:nth-child(3) {
+        animation: round infinite 8s linear;
+        animation-delay: -50ms;
+    }
+    .logo-img img:nth-child(4) {
+        animation: round infinite 6s linear;
+        animation-delay: -75ms;
+    }
+    .logo-img img:nth-child(5) {
+        animation: round infinite 4s linear;
+        animation-delay: -100ms;
+    }
+    .logo-img img:nth-child(6) {
+        animation: round infinite 2s linear;
+        animation-delay: -125ms;
+    }
+      
+}

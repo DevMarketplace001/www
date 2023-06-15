@@ -1,0 +1,45 @@
+<div class="logo">
+    <div class="logo-img">
+        <img src="../imgs/header/1.png" alt="">
+        <img src="../imgs/header/2.png" alt="">
+        <img src="../imgs/header/3.png" alt="">
+        <img src="../imgs/header/4.png" alt="">
+        <img src="../imgs/header/5.png" alt="">
+        <img src="../imgs/header/6.png" alt="">
+    </div>
+    <div class="logo-name">
+        <img src="../imgs/header/name.png" alt="">
+    </div>
+</div>
+<div class="btns-header">
+    <div class="tabs">
+        <a href="/" class="large">home</a>
+        <a href="/about" class="large">about</a>
+        <a href="/contact" class="large">contacts</a>
+        <!-- <a href="/home" class="large">faq</a> -->
+    </div>
+    <div class="btns-search">
+        <img src="../imgs/assets/search.png" alt="aaa">
+        <img src="../imgs/assets/arrow.png" alt="aaa">
+    </div>
+</div>
+<% if (user) { %>
+    <div class="user">
+        <div class="head">
+            <img src="<% if (user.img) { %>../users/<%= user.id %>/avatar/<%= user.img %><% }else{ %>../imgs/default_avatar.png<% }%>" alt="">
+        </div>
+        <ul class="body">
+            <li><a href="/profile" class="smallest">Profile</a></li>
+            <% if (user.role == 3) { %>
+                <li><a href="/manager_cat" class="smallest">Manager categories</a></li>
+                <li><a href="/manager_tag" class="smallest">Manager tags</a></li>
+            <% } %>
+            <li><a href="/products" class="smallest">Products</a></li>
+            <li><a href="/cabinet" class="smallest">Cabinet</a></li>
+            <li><a href="/manager_product" class="smallest">Add product</a></li>
+            <li><a href="/cart" class="smallest">Cart</a></li>
+            <li><a href="/history" class="smallest">History</a></li>
+            <li><a href="/logout" class="smallest">Log out</a></li>
+        </ul>
+    </div>
+<% } %>
