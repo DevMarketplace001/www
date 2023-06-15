@@ -25,7 +25,7 @@ User.init({
         allowNull: false
     },
     role:{
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         defaultValue: 1
     },
     img:{

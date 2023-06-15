@@ -299,5 +299,4 @@ $(document).ready(function () {
             }
         });
     });
-    
 });

@@ -15,7 +15,7 @@ const bcrypt = require("bcrypt");
 async function DB(){
     let salt = await bcrypt.genSalt(10)
     let password =await bcrypt.hash("1234",salt)
-    models.user.findOrCreate({where:{username:"admin"},defaults:{username:"admin", email:"aleksei22891@.com", password, salt}})
+    models.user.findOrCreate({where:{username:"admin"},defaults:{username:"admin", email:"aleksei22891@.com", role: 3, password, salt}})
 }
 DB()
 

@@ -2,6 +2,7 @@
     width: 18vmax;
     height: 15vmax;
     position: relative;
+    margin: 10px;
 }
 .card form{
     position: absolute;

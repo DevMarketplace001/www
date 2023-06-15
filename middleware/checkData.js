@@ -33,7 +33,7 @@ exports.checkAvatarDirectory = async function(req, res, next){
         console.log(directoryPath)
         if (err) {
         // Директория не существует, создаем ее
-        fs.mkdirSync(directoryPath);
+        fs.mkdirSync(directoryPath, {recursive: true});
         }
         next();
     });

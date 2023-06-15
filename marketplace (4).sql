@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Июн 15 2023 г., 07:52
+-- Время создания: Июн 15 2023 г., 11:32
 -- Версия сервера: 10.4.27-MariaDB
 -- Версия PHP: 8.1.12
 
@@ -35,6 +35,13 @@ CREATE TABLE `carts` (
   `updatedAt` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Дамп данных таблицы `carts`
+--
+
+INSERT INTO `carts` (`id`, `userId`, `productId`, `createdAt`, `updatedAt`) VALUES
+(1, 2, 4, '2023-06-15 09:27:45', '2023-06-15 09:27:45');
+
 -- --------------------------------------------------------
 
 --
@@ -53,9 +60,9 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `title`, `createdAt`, `updatedAt`) VALUES
-(3, 'snippets', '2023-06-14 08:55:18', '2023-06-14 08:55:18'),
-(4, 'libraries', '2023-06-14 10:08:01', '2023-06-14 10:08:01'),
-(5, 'codes', '2023-06-14 10:08:07', '2023-06-14 10:08:07');
+(1, 'code', '2023-06-15 09:20:10', '2023-06-15 09:20:10'),
+(2, 'lobraries', '2023-06-15 09:20:17', '2023-06-15 09:20:17'),
+(3, 'snippets', '2023-06-15 09:20:22', '2023-06-15 09:20:22');
 
 -- --------------------------------------------------------
 
@@ -70,19 +77,6 @@ CREATE TABLE `histories` (
   `purchaseDate` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Дамп данных таблицы `histories`
---
-
-INSERT INTO `histories` (`id`, `userId`, `productId`, `purchaseDate`) VALUES
-(1, 2, 2, '2023-06-15 03:03:07'),
-(2, 2, 4, '2023-06-15 03:04:21'),
-(3, 2, 3, '2023-06-15 03:04:21'),
-(4, 3, 2, '2023-06-15 03:06:55'),
-(5, 3, 3, '2023-06-15 03:06:55'),
-(6, 3, 4, '2023-06-15 03:06:55'),
-(7, 3, 6, '2023-06-15 03:06:55');
-
 -- --------------------------------------------------------
 
 --
@@ -94,9 +88,40 @@ CREATE TABLE `most_popular` (
 ,`purchase_count` bigint(21)
 ,`title` varchar(25)
 ,`price` double
-,`sellerId` varchar(255)
+,`sellerId` int(11)
 ,`resultPath` varchar(255)
 );
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `popular`
+--
+
+CREATE TABLE `popular` (
+  `productId` int(11) DEFAULT 0,
+  `purchase_count` bigint(21) NOT NULL,
+  `title` varchar(25) NOT NULL,
+  `price` double NOT NULL,
+  `sellerId` int(11) NOT NULL,
+  `resultPath` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `productcart`
+--
+
+CREATE TABLE `productcart` (
+  `historyId` int(11) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `productId` int(11) DEFAULT 0,
+  `sellerId` int(11) NOT NULL,
+  `title` varchar(25) NOT NULL,
+  `price` double NOT NULL,
+  `resultPath` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -107,25 +132,24 @@ CREATE TABLE `most_popular` (
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `title` varchar(25) NOT NULL,
-  `sellerId` varchar(255) NOT NULL,
+  `sellerId` int(11) NOT NULL,
   `description` text DEFAULT NULL,
   `price` double NOT NULL,
-  `categoryId` double NOT NULL,
+  `categoryId` int(11) NOT NULL,
   `codePath` varchar(255) DEFAULT NULL,
+  `resultPath` varchar(255) DEFAULT NULL,
   `createdAt` datetime NOT NULL,
-  `updatedAt` datetime NOT NULL,
-  `resultPath` varchar(255) DEFAULT NULL
+  `updatedAt` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Дамп данных таблицы `products`
 --
 
-INSERT INTO `products` (`id`, `title`, `sellerId`, `description`, `price`, `categoryId`, `codePath`, `createdAt`, `updatedAt`, `resultPath`) VALUES
-(2, 'addawedsfgh', '1', 'jaewjhfjhjqhw  fhh  ahu fahjkfhjkhjk afhjkfd hkjhjk dhjk asf dhjkfhk udsaf fd hjk hjk', 500.12, 3, 'slider.rar', '2023-06-15 00:50:03', '2023-06-15 05:41:57', 'pngtree-gamer-squad-army-logo-gaming-mascot-png-image_4895789.jpg'),
-(3, 'addafgf vhvh', '1', 'jaewjhfjhjqhw  fhh  ahu faf', 500225, 3, 'xolonium-font.zip', '2023-06-15 00:50:15', '2023-06-15 03:59:51', 'pngtree-phantom-e-sports-logo-gaming-mascot-png-image_5272477.jpg'),
-(4, 'adda', '1', 'jaewjhfjhjqhw  fhh  ahu fahjkfhjkhjk afhjkfd hkjhjk dhjk asf dhjkfhk udsaf fd hjk hjkh fdhfdakjh f', 500, 4, 'Knight.rar', '2023-06-15 00:50:25', '2023-06-15 00:50:25', 'CkYVGFwlmQA.jpg'),
-(6, 'adda', '1', 'jaewjhfjhjqhw  fhh  ahu fahjkfhjkhjk afhjkfd hkjhjk dhjk asf dhjkfhk udsaf fd hjk hjkh fdhfdakjh f', 500, 4, 'JPTV20- Aleksei_Kolzov.rar', '2023-06-15 03:05:17', '2023-06-15 03:05:17', 'DP7Rnc-V4AA3z_O.jpg');
+INSERT INTO `products` (`id`, `title`, `sellerId`, `description`, `price`, `categoryId`, `codePath`, `resultPath`, `createdAt`, `updatedAt`) VALUES
+(2, 'slider', 1, 'slider', 1.2, 1, 'DevMarketplace.zip', '8304be6a513c6987e58c9bb775116f281a06476a3e1481aef097ec55afc765d0.jpg', '2023-06-15 09:22:24', '2023-06-15 09:22:24'),
+(3, 'fonts', 1, 'very nice font', 0.5, 2, 'enso-font.zip', 'pngtree-phantom-e-sports-logo-gaming-mascot-png-image_5272477.jpg', '2023-06-15 09:26:08', '2023-06-15 09:26:08'),
+(4, 'aaaaaaaaa', 1, 'very expensive', 1000000, 3, 'Knight.rar', 'pngtree-blue-samurai-esports-logo-gaming-mascot-logo-png-image_4262999.jpg', '2023-06-15 09:27:24', '2023-06-15 09:27:25');
 
 -- --------------------------------------------------------
 
@@ -139,7 +163,7 @@ CREATE TABLE `product_cart` (
 ,`productId` int(11)
 ,`title` varchar(25)
 ,`price` double
-,`sellerId` varchar(255)
+,`sellerId` int(11)
 ,`resultPath` varchar(255)
 );
 
@@ -155,7 +179,7 @@ CREATE TABLE `product_history` (
 ,`productId` int(11)
 ,`title` varchar(25)
 ,`price` double
-,`sellerId` varchar(255)
+,`sellerId` int(11)
 ,`resultPath` varchar(255)
 );
 
@@ -176,10 +200,9 @@ CREATE TABLE `product_tags` (
 --
 
 INSERT INTO `product_tags` (`id`, `productId`, `tagId`) VALUES
-(4, 4, 8),
-(5, 5, 8),
-(6, 6, 8),
-(7, 3, 8);
+(1, 2, 1),
+(2, 3, 2),
+(3, 4, 3);
 
 -- --------------------------------------------------------
 
@@ -199,17 +222,10 @@ CREATE TABLE `tags` (
 --
 
 INSERT INTO `tags` (`id`, `title`, `createdAt`, `updatedAt`) VALUES
-(2, 'node js', '2023-06-14 08:54:40', '2023-06-14 08:54:40'),
-(3, 'js', '2023-06-14 08:54:49', '2023-06-14 08:54:49'),
-(4, 'laravel', '2023-06-14 08:54:57', '2023-06-14 08:54:57'),
-(5, 'react js', '2023-06-14 08:55:51', '2023-06-14 08:55:51'),
-(6, 'type script', '2023-06-14 08:56:00', '2023-06-14 08:56:00'),
-(7, 'jquery', '2023-06-14 08:56:09', '2023-06-14 08:56:09'),
-(8, 'apache spark', '2023-06-14 08:56:20', '2023-06-14 08:56:20'),
-(9, 'java', '2023-06-14 08:56:29', '2023-06-14 08:56:29'),
-(10, 'html', '2023-06-14 08:56:33', '2023-06-14 08:56:33'),
-(11, 'python', '2023-06-14 08:56:48', '2023-06-14 08:56:48'),
-(12, 'php', '2023-06-14 10:07:48', '2023-06-14 10:07:48');
+(1, 'js', '2023-06-15 09:20:31', '2023-06-15 09:20:31'),
+(2, 'php', '2023-06-15 09:20:33', '2023-06-15 09:20:33'),
+(3, 'python', '2023-06-15 09:20:36', '2023-06-15 09:20:36'),
+(4, 'node js', '2023-06-15 09:20:41', '2023-06-15 09:20:41');
 
 -- --------------------------------------------------------
 
@@ -223,7 +239,7 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `salt` varchar(255) NOT NULL,
-  `role` varchar(255) DEFAULT '1',
+  `role` int(11) DEFAULT 1,
   `img` text DEFAULT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL
@@ -234,13 +250,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `salt`, `role`, `img`, `createdAt`, `updatedAt`) VALUES
-(1, 'admin', 'aleksei22891@.com', '$2b$10$qsFINpk4a2nsIdmCTiu2cOCbgSSEu8GVS3cwq21DUrfkfRJ0hLsyq', '$2b$10$qsFINpk4a2nsIdmCTiu2cO', '3', 'pngtree-blue-samurai-esports-logo-gaming-mascot-logo-png-image_4262999.jpg', '2023-06-14 13:54:20', '2023-06-14 13:56:24'),
-(2, 'mifis', 'mifis01@gmail.com', '$2b$10$vFNmzVMQ1c/ltJCNqI6Sb.oUblzbi48SpvQ07Xb2kZzaLSiWrXf5W', '$2b$10$vFNmzVMQ1c/ltJCNqI6Sb.', '1', NULL, '2023-06-13 18:35:58', '2023-06-13 18:35:58'),
-(3, 'mifista', 'mifista01@gmail.com', '$2b$10$ecy6WIpCdP1Lkayg5q71r.PXEabGGlNAV.GpcVnHCTOMIc03BrBZu', '$2b$10$ecy6WIpCdP1Lkayg5q71r.', '1', NULL, '2023-06-13 18:36:37', '2023-06-13 18:36:37'),
-(4, 'mif', 'mif01@gmail.com', '$2b$10$B7hC2h9pshOub/s5/vESBOTeUCXzqSWjjFSFsATg/DqsXKGQukipK', '$2b$10$B7hC2h9pshOub/s5/vESBO', '1', NULL, '2023-06-13 18:37:02', '2023-06-13 18:37:02'),
-(6, 'daniilklishin', '22891aleksei@gmail.com', '$2b$10$8SZvOGJOFp55LC7RqasN2e6YjrKu/PlX3npVyMwWoFSOxUIQhH1QK', '$2b$10$8SZvOGJOFp55LC7RqasN2e', '1', NULL, '2023-06-13 22:53:00', '2023-06-13 22:53:00'),
-(9, 'rustem', 'aaa@gmail.com', '$2b$10$vXb2k4FMsRMho8K2NRy1m.Jj8Dz/k2zD1p44NFEPGv3RgrOGiqTry', '$2b$10$vXb2k4FMsRMho8K2NRy1m.', '1', 'pngtree-extreme-hunter-gaming-logo-template-for-gamer-image_304139.jpg', '2023-06-15 05:27:23', '2023-06-15 05:34:21'),
-(11, 'qwerty', 'qwerty@GMAIL.COM', '$2b$10$v7OaQl4LXeKcuwioJkQm4OvYFMuX7vjAtu.lG5QGR9Gin3izLlLKi', '$2b$10$v7OaQl4LXeKcuwioJkQm4O', '1', NULL, '2023-06-15 05:32:42', '2023-06-15 05:32:42');
+(1, 'admin', 'aleksei22891@.com', '$2b$10$xvTuliT5..HO2SM5wjqjwu4qq.8YPQutnh.X.9O5hZnGMCw6aE/Iu', '$2b$10$xvTuliT5..HO2SM5wjqjwu', 3, 'pngtree-extreme-hunter-gaming-logo-template-for-gamer-image_304139.jpg', '2023-06-15 09:18:51', '2023-06-15 09:19:59'),
+(2, 'mif', 'mif@gmail.com', '$2b$10$dq52Sl3dbp398kbv.6qQFujph5yvUWPAhn0zKTJf6zHl0GtwWGOPC', '$2b$10$dq52Sl3dbp398kbv.6qQFu', 1, NULL, '2023-06-15 09:27:41', '2023-06-15 09:27:41');
 
 -- --------------------------------------------------------
 
@@ -277,7 +288,9 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- Индексы таблицы `carts`
 --
 ALTER TABLE `carts`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `userId` (`userId`),
+  ADD KEY `productId` (`productId`);
 
 --
 -- Индексы таблицы `categories`
@@ -289,19 +302,25 @@ ALTER TABLE `categories`
 -- Индексы таблицы `histories`
 --
 ALTER TABLE `histories`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `userId` (`userId`),
+  ADD KEY `productId` (`productId`);
 
 --
 -- Индексы таблицы `products`
 --
 ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `sellerId` (`sellerId`),
+  ADD KEY `categoryId` (`categoryId`);
 
 --
 -- Индексы таблицы `product_tags`
 --
 ALTER TABLE `product_tags`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `productId` (`productId`),
+  ADD KEY `tagId` (`tagId`);
 
 --
 -- Индексы таблицы `tags`
@@ -323,43 +342,75 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблицы `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT для таблицы `histories`
 --
 ALTER TABLE `histories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT для таблицы `product_tags`
 --
 ALTER TABLE `product_tags`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT для таблицы `tags`
 --
 ALTER TABLE `tags`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Ограничения внешнего ключа сохраненных таблиц
+--
+
+--
+-- Ограничения внешнего ключа таблицы `carts`
+--
+ALTER TABLE `carts`
+  ADD CONSTRAINT `carts_ibfk_7` FOREIGN KEY (`userId`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `carts_ibfk_8` FOREIGN KEY (`productId`) REFERENCES `products` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `histories`
+--
+ALTER TABLE `histories`
+  ADD CONSTRAINT `histories_ibfk_7` FOREIGN KEY (`userId`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `histories_ibfk_8` FOREIGN KEY (`productId`) REFERENCES `products` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `products`
+--
+ALTER TABLE `products`
+  ADD CONSTRAINT `products_ibfk_7` FOREIGN KEY (`sellerId`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `products_ibfk_8` FOREIGN KEY (`categoryId`) REFERENCES `categories` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `product_tags`
+--
+ALTER TABLE `product_tags`
+  ADD CONSTRAINT `product_tags_ibfk_7` FOREIGN KEY (`productId`) REFERENCES `products` (`id`),
+  ADD CONSTRAINT `product_tags_ibfk_8` FOREIGN KEY (`tagId`) REFERENCES `tags` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

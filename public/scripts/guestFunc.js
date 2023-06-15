@@ -41,4 +41,24 @@ $(document).ready(function () {
             }
         });
     });
+    $("#search").keyup(function (e) { 
+        $.ajax({
+            type: "post",
+            url: "/search",
+            data: {title:e.target.value},
+            dataType: "html",
+            success: function (response) {
+                $(".searchResult").html(response);
+            }
+        });
+    });
+    $.ajax({
+        type: "post",
+        url: "/search",
+        data: {title:$("#search").val()},
+        dataType: "html",
+        success: function (response) {
+            $(".searchResult").html(response);
+        }
+    });
 });

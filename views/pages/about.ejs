@@ -26,7 +26,9 @@
                     
                 </main>
             </div>
-            <%- include('../partials/auth.ejs'); %>
+            <% if (!user) { %>
+                <%- include('../partials/auth.ejs'); %>
+            <% } %>
             <footer>
                 <%- include('../partials/footer'); %>
             </footer>

@@ -50,3 +50,8 @@ exports.registration = async function(req, res){
       res.send({text:"Error, incorrect symbol('.','*'...)"})
    }
 }
+exports.search = async function(req, res){
+   let product = await models.product.findAll({where:{[models.Op.or]:[{title:{[models.Op.substring]:req.body.title}},{price:{[models.Op.substring]:req.body.title}}]}})
+   console.log(product)
+   res.render('../views/fragments/card.ejs', {product})
+}

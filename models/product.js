@@ -14,7 +14,11 @@ Product.init({
     },
     sellerId:{
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references:{
+            model: "users",
+            key:"id"
+        }
     },
     description:{
         type: DataTypes.TEXT
@@ -24,8 +28,12 @@ Product.init({
         allowNull: false
     },
     categoryId:{
-        type: DataTypes.DOUBLE,
-        allowNull: false
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references:{
+            model: "categories",
+            key:"id"
+        }
     },
     codePath:{
         type: DataTypes.STRING,

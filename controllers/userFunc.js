@@ -44,7 +44,7 @@ exports.updateProfile = async function(req, res){
             delete req.body.username
         }
         if(findEmail){
-            delete req.body.email
+            delete req.body.email 
         }
         let user = await models.user.findOne({where:{id: req.session.user.id, salt: req.session.user.salt}});
         let password = await models.bcrypt.hash(req.body.password, req.session.user.salt);
@@ -56,6 +56,9 @@ exports.updateProfile = async function(req, res){
     }
 }
 exports.checkProduct = async function(req, res){
+    if(!models.validator.isNumeric(req.body.category)){
+        req.body.category = 1
+    }
     let data = {
         title: req.body.title,
         sellerId:req.session.user.id,

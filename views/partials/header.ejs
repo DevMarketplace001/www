@@ -19,8 +19,11 @@
         <!-- <a href="/home" class="large">faq</a> -->
     </div>
     <div class="btns-search">
-        <img src="../imgs/assets/search.png" alt="aaa">
-        <img src="../imgs/assets/arrow.png" alt="aaa">
+        <div class="window-btn">
+            <img src="../imgs/assets/search.png" alt="aaa">
+            <img src="../imgs/assets/arrow.png" alt="aaa">
+        </div>
+        <%- include('../partials/search'); %>
     </div>
 </div>
 <% if (user) { %>

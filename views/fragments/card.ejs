@@ -1,0 +1,10 @@
+<% product.forEach(element => { %>
+    <div class="card">
+        <div class="card-img" style="border: 2px solid white;background-image: url('../users/<%= element.sellerId%>/product<%= element.id%>/result/<%=element.resultPath%>');">
+            <a href="/product/<%= element.id %>"></a></div>
+        <div class="card-body">
+            <p class="title"><%= element.title %></p>
+            <p class="price"><%= element.price %>$</p>
+        </div>
+    </div>
+<% }) %>
